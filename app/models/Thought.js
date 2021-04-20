@@ -1,13 +1,14 @@
-const {model,Schema} = require('mongoose')
+const {model, Schema} = require('mongoose')
 
 
 const thoughtSchema = new Schema({
     username: String,
     body: String,
-    images_path:String,
+    assetPath: String,
+    assetName:String,
     comments: [
         {
-            type: new mongoose.Schema(
+            type: new Schema(
                 {
                     body: String,
                     username: String,
@@ -20,17 +21,16 @@ const thoughtSchema = new Schema({
         {
             type: new Schema(
                 {
-                    body: String,
                     username: String,
                 }, {timestamps: true}
             )
         }
     ],
-    user:{
+    user: {
         type: Schema.Types.ObjectId,
-        ref:'users'
+        ref: 'users'
     }
 
 }, {timestamps: true})
 
-module.exports(model('Thought',thoughtSchema));
+module.exports = model('Thought', thoughtSchema);

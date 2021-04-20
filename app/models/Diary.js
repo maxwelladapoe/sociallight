@@ -3,6 +3,15 @@ const {model, Schema} = require('mongoose');
 const diarySchema = new Schema({
     username: String,
     body: String,
+    images:[
+        {
+            type : new Schema ({
+                name:String,
+                path:String,
+                username: String,
+            },{timestamps:true})
+        }
+    ],
     comments: [
         {
             type: new Schema(
@@ -18,7 +27,6 @@ const diarySchema = new Schema({
         {
             type: new Schema(
                 {
-                    body: String,
                     username: String,
                 }, {timestamps: true}
             )
@@ -31,4 +39,4 @@ const diarySchema = new Schema({
 
 }, {timestamps: true})
 
-module.exports = model('DiaryPost', diarySchema)
+module.exports = model('Diary', diarySchema)
